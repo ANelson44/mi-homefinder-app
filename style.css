@@ -1,0 +1,19 @@
+body{
+    background-color:#1b5045;
+    color: white;
+    font-weight: 110%
+}
+
+  .box {
+    width: 800px;
+    height: 250px;
+    background-color:White;
+    color:#1b5045;
+    border: 1px solid white;
+    padding: 10px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    font-size:25px;
+  }
+

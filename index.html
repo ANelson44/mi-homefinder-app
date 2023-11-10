@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MI Homes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    </head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
 
-    <body>
-        <div class="flex-row align-center justify-center min-100-vh bg-primary">
-            <div class="col-12 col-md-9 flex-column align-center bg-light p-5">
-              <h1 class="text-primary">MI Homes Near You!</h1>
-              <p>Use the search bar and select your preferences to find your new home!</p>
-              <form id="search-form" class="form w-100">
-                <input id="search-input" class="form-input w-100" type="text" placeholder="Search your zipcode!">
-                <select id="format-input" class="form-input w-100">
-        <script src="assets/js/script.js"></script>
-        </select>
-        <button class="btn btn-info btn-block">Generate results!</button>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1 class="text-primary">MI Homes Near You!</h1>
+            <p>Use the search bar and select your preferences to find your new home!</p>
 
-        </body>
+
+            <!--From Tailwind CSS-->
+            <div class="mb-3">
+                <div class="relative mb-4 flex w-full flex-wrap items-stretch">
+                    <input type="search"
+                        class="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                        placeholder="Enter zipcode" aria-label="Search" aria-describedby="button-addon3" />
+
+
+                    <!--Search button-->
+                    <button
+                        class="relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+                        type="button" id="button-addon3" data-te-ripple-init>
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
