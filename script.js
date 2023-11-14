@@ -27,3 +27,4 @@ function findNationalParks() {
   })
   .catch(error => console.error('Error fetching data:', error));
 }
+findNationalParks();
