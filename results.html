@@ -11,10 +11,10 @@
 
   <body>
     <div class="flex flex-wrap justify-end mb-4">
-        <div class="card max-w-sm rounded mb-2 overflow-hidden shadow-lg m-4">
+        <div class="card max-w-sm rounded mb-2 overflow-hidden shadow-lg m-4" id="parkCard">
             <img class="w-full" src="./images/dillon-kydd-XGvwt544g8k-unsplash.jpg" alt="National Park"> 
             <div class="px-6 py-4 bg-green-700">
-              <div class="font-bold text-xl mb-2">Park Name:</div>
+              <div class="font-bold text-xl mb-2" id="parkName">Park Name:<ol id="parkList"></ol></div>
               <div class="font-bold text-l mb-2">State:</div>
                 <div class="flex flex-wrap justify-around font-bold text-1 mb-2 ">
                   <a href="" ><i class="animate-pulse w-6 h-6 fa-solid fa-map-location fa-lg mt-2"></i> Map View</a>
@@ -77,4 +77,5 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </body>
