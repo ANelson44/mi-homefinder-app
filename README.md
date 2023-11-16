@@ -1,2 +1,2 @@
-# mi-homefinder-app
-Collaborative project creating a home finder app for the state of Michigan
+# national-park-explorer
+Collaborative project creating a National Park Explorer web app.

@@ -57,8 +57,6 @@ let cardHtml = '';
 function displayNationalParks() {
   const stateCode = localStorage.getItem('selectedState');
   const parksContainer = document.getElementById('parkCard');
-  //var publicBathrooms = document.getElementById('publicBathrooms').checked;
-  //var rvAccess = document.getElementById('rvAccess').checked;
 
   var apiKey = 'IIMr3waPpdOKznPvpyy5r3tNLTtNxOJ0KtZk3Xef';
   var npsUrl = `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&api_key=${apiKey}`;
@@ -77,12 +75,13 @@ function displayNationalParks() {
         const parkDescription = park.description;
         const thingsToDo = park.activities.map((activity) => activity.name).join(', ');
         const imageUrl = park.images.length > 0 ? park.images[0].url : 'default_image_url.jpg';
+        const vistorCenter = park.url;
 
         cardHtml += `
-          <div class="card max-w-sm rounded overflow-hidden shadow-lg m-4">
+          <div class="card max-w-sm rounded overflow-auto h-fit shadow-lg m-4">
             <img class="w-full" src="${imageUrl}" alt="${parkName}"> 
-            <div class="px-6 py-4 bg-green-700">
-              <div class="font-bold text-xl mb-2">Park Name: ${parkName}</div>
+            <div class="px-6 py-4 bg-slate-50">
+              <div class="font-bold text-xl mb-2"> ${parkName}</div>
               <div class="font-bold text-l mb-2">State: ${parkState}</div>
               <h3 class="font-bold"> Description </h3>
               <div class="text-l mb-2"> ${parkDescription}</div>
@@ -90,14 +89,8 @@ function displayNationalParks() {
               <div class=" text-l mb-2"> ${thingsToDo}</div>
               <div class="flex flex-wrap justify-between font-bold text-1 mb-2 ">
                 <a href="" ><i class="animate-pulse w-6 h-6 fa-solid fa-map-location fa-lg mt-2"></i> Map View</a>
-                <a href="" class="underline">Go to Visitor Center!</a>
+                <a href="${vistorCenter}" class="underline">Go to Visitor Center!</a>
               </div>
-            </div>
-            <div class="px-6 pt-4 pb-2 bg-green-800">
-              <div class="font-bold text-l mb-2">Amenities:</div>
-              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Bathrooms </span>
-              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Showers </span>
-              <!-- Add more amenities as needed -->
             </div>
           </div>
         `;
