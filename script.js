@@ -54,7 +54,7 @@ function displayNationalParks() {
       console.log('API Data:', apple);
       const parks = apple.data;
 
-      parks.forEach((park) => {
+      parks.forEach((park, index) => {
         const parkName = park.fullName;
         const parkState = park.states;
         const parkDescription = park.description;
@@ -73,7 +73,7 @@ function displayNationalParks() {
               <h3 class="font-bold"> Things To Do </h3>
               <div class=" text-l mb-2"> ${thingsToDo}</div>
               <div class="flex flex-wrap justify-between font-bold text-1 mb-2 ">
-                <a href="" ><i class="animate-pulse w-6 h-6 fa-solid fa-map-location fa-lg mt-2"></i> Map View</a>
+                <a href="#" data-index="${index}" class="show-map-link"><i class="animate-pulse w-6 h-6 fa-solid fa-map-location fa-lg mt-2"></i> Map View</a>
                 <a href="${vistorCenter}" class="underline">Go to Visitor Center!</a>
               </div>
             </div>
@@ -85,7 +85,36 @@ function displayNationalParks() {
 
       console.log('Park Name: ', cardHtml);
       $('#parkList').html(cardHtml);
+
+      // event listener for "show map" button
+      document.querySelectorAll('.show-map-link').forEach(link => {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+          showMap(parseInt(this.dataset.index, 10));
+        });
+      });
     });
+}
+
+// map function
+function showMap(parkIndex) {
+  const parkCode = localStorage.getItem('selectedState');
+  const apiKey = 'IIMr3waPpdOKznPvpyy5r3tNLTtNxOJ0KtZk3Xef';
+  const npsUrl = `https://developer.nps.gov/api/v1/parks?stateCode=${parkCode}&api_key=${apiKey}`;
+
+  fetch(npsUrl)
+    .then(response => response.json())
+    .then(apple => {
+      const nParks = apple.data;
+      const park = nParks[parkIndex];
+
+      // url with park location
+      const mapPageUrl = `map.html?name=${encodeURIComponent(park.fullName)}&lat=${park.latitude}&lng=${park.longitude}`;
+
+      // go to map page
+      window.location.href = mapPageUrl;
+    })
+    .catch(error => console.error('Error fetching park data:', error));
 }
 
 if (window.location.pathname.includes('results.html')) {

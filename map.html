@@ -32,39 +32,57 @@
         }
         
         #map {
-            height: 600px;
-            width: 600px;
+            height: 900px;
+            width: 900px;
+        }
+
+        @media screen and (max-width: 1000px) {
+            #map {
+                height: 700px;
+                width: 700px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            #map {
+                height: 400px;
+                width: 400px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            #map {
+                height: 300px;
+                width: 300px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Map container -->
     <div id="map"></div>
 
     <script>
         // map function
         function initMap() {
-            // Replace 'map' with the actual ID of your map container
             const mapElement = document.getElementById('map');
 
-            // Get park information from the URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const parkName = decodeURIComponent(urlParams.get('name')) || 'Park Name';
-            const latitude = parseFloat(urlParams.get('lat')) || 0;
-            const longitude = parseFloat(urlParams.get('lng')) || 0;
+            // get park from URL
+            const urlParameter = new URLSearchParams(window.location.search);
+            const parkName = decodeURIComponent(urlParameter.get('name')) || 'Park Name';
+            const latitude = parseFloat(urlParameter.get('lat')) || 0;
+            const longitude = parseFloat(urlParameter.get('lng')) || 0;
 
-            // Check if Leaflet is defined
+            // leaflet
             if (typeof L !== 'undefined') {
-                // Create the map centered on the provided location
                 const map = L.map(mapElement).setView([latitude, longitude], 10);
 
-                // Add a marker for the park
+                // map marker
                 L.marker([latitude, longitude]).addTo(map)
                     .bindPopup(`<b>${parkName}</b><br>Latitude: ${latitude}<br>Longitude: ${longitude}`)
                     .openPopup();
 
-                // Add the OpenStreetMap layer to the map
+                // OpenStreetMap layering
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
@@ -73,7 +91,7 @@
             }
         }
 
-        // Call initMap when the DOM has fully loaded
+        // load map last
         document.addEventListener('DOMContentLoaded', () => {
             initMap();
         });
