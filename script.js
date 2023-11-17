@@ -16,21 +16,6 @@ var availableStates = [
 var resultsBox = document.querySelector('.result-box');
 var inputBox = document.getElementById('state');
 
-// inputBox.onkeyup = function () {
-//   var result = [];
-//   var input = inputBox.value;
-//   if (input.length) {
-//       result = availableStates.filter((states) => {
-//           return states.toLowerCase().includes(input.toLowerCase());
-//       });
-//       console.log(result);
-//   }
-//   display(result);
-
-//   if(!result.length){
-//       resultsBox.innerHTML = '';
-//   }
-// }
 
 function display(result){
   var content = result.map((list)=>{
@@ -105,4 +90,19 @@ function displayNationalParks() {
 
 if (window.location.pathname.includes('results.html')) {
   displayNationalParks();
+}
+inputBox.onkeyup = function () {
+  var result = [];
+  var input = inputBox.value;
+  if (input.length) {
+      result = availableStates.filter((states) => {
+         return states.toLowerCase().includes(input.toLowerCase());
+      });
+      console.log(result);
+  }
+  display(result);
+
+  if(!result.length){
+      resultsBox.innerHTML = '';
+ }
 }
