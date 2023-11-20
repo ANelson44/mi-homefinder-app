@@ -7,6 +7,11 @@ As a user, I want to be able to view a state's national parks and information ab
 ## How to Use
 To use the national park explorer, just search a state up by its abbreviation and hit enter or the search button to explore its national parks! 
 
+Follow the link to see the page! ==> https://anelson44.github.io/national-park-explorer/
+
+![Home Screen](./images/homepage%20screenshot.png)
+![Results Screen](./images/results%20screenshot.png)
+
 ## Technologies Used
 We used a varity of technologies for this project. In our JavaScript, we used the National Parks Service API as well as OpenStreetMaps API. For CSS, we used Tailwind CSS as well as just traditional CSS. In our HTML, we used FontAwesome for icons. 
 
